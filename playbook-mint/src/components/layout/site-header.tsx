@@ -12,9 +12,9 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-content items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 text-lg font-semibold text-ink-900">
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-600 text-sm font-bold uppercase text-white shadow-sm">
-            PM
+            TP
           </span>
-          <span className="font-heading text-lg">Playbook Mint</span>
+          <span className="font-heading text-lg">The Thrifty Pigeon</span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium text-ink-600 sm:flex">
           {navigation.map((item) => (

@@ -3,13 +3,13 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://playbookmint.com"),
+  metadataBase: new URL("https://thethriftypigeon.com"),
   title: {
-    default: "Playbook Mint — Micro playbooks that convert readers into buyers",
-    template: "%s | Playbook Mint",
+    default: "The Thrifty Pigeon — Micro playbooks that convert readers into buyers",
+    template: "%s | The Thrifty Pigeon",
   },
   description:
-    "Playbook Mint turns high-intent search traffic into instant $5-$9 playbook downloads with contextual CTAs and seamless checkout.",
+    "The Thrifty Pigeon turns high-intent search traffic into instant $5-$9 playbook downloads with contextual CTAs and seamless checkout.",
 };
 
 export default function RootLayout({
