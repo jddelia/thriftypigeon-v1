@@ -27,9 +27,9 @@ export function SiteFooter() {
           <div className="space-y-4">
             <p className="inline-flex items-center gap-2 text-lg font-semibold">
               <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-500 text-sm font-bold uppercase text-white shadow-sm">
-                TP
+                PM
               </span>
-              <span className="font-heading text-xl text-white">The Thrifty Pigeon</span>
+              <span className="font-heading text-xl text-white">Playbook Mint</span>
             </p>
             <p className="max-w-sm text-sm text-ink-200">
               Actionable playbooks for people who want to make smarter money moves without spending hours researching.
@@ -55,7 +55,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="mt-12 border-t border-white/10 pt-6 text-xs text-ink-300">
-          © {new Date().getFullYear()} The Thrifty Pigeon. All rights reserved.
+          © {new Date().getFullYear()} Playbook Mint. All rights reserved.
         </div>
       </div>
     </footer>

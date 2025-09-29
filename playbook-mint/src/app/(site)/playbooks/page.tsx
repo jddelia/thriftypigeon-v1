@@ -2,7 +2,7 @@ import Link from "next/link";
 import { listPlaybooks } from "@/data/playbooks";
 
 export const metadata = {
-  title: "Playbooks | The Thrifty Pigeon",
+  title: "Playbooks | Playbook Mint",
   description:
     "Instant-download playbooks designed to turn motivated readers into paying customers. Each comes with scripts, templates, and automation recipes.",
 };

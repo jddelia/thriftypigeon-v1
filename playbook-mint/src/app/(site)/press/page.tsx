@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Press Kit | The Thrifty Pigeon",
-  description: "Press-ready assets, company facts, and contact info for The Thrifty Pigeon.",
+  title: "Press Kit | Playbook Mint",
+  description: "Press-ready assets, company facts, and contact info for Playbook Mint.",
 };
 
 export default function PressPage() {
@@ -10,7 +10,7 @@ export default function PressPage() {
       <h1 className="mt-4 font-heading text-4xl font-semibold text-ink-900">Press kit & fast facts</h1>
       <div className="prose prose-lg mt-6 max-w-none text-ink-700">
         <p>
-          The Thrifty Pigeon is a content-first micro-product brand helping motivated readers unlock instant-download playbooks. For interviews, quotes, or media assets, you can reach us at press@thethriftypigeon.com.
+          Playbook Mint is a content-first micro-product brand helping motivated readers unlock instant-download playbooks. For interviews, quotes, or media assets, you can reach us at press@playbookmint.com.
         </p>
         <ul>
           <li>Founded: 2024</li>

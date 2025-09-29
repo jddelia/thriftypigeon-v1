@@ -3,9 +3,9 @@ import { listArticles } from "@/lib/articles";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Articles | The Thrifty Pigeon",
+  title: "Articles | Playbook Mint",
   description:
-    "Free how-to guides and listicles that lead into our $5-$9 extended playbooks. Browse the latest content from The Thrifty Pigeon.",
+    "Free how-to guides and listicles that lead into our $5-$9 extended playbooks. Browse the latest content from Playbook Mint.",
 };
 
 export default async function ArticlesIndexPage() {

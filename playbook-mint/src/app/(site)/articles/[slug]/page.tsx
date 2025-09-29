@@ -23,14 +23,14 @@ export async function generateMetadata({
 
   if (!article) {
     return {
-      title: "Article not found | The Thrifty Pigeon",
+      title: "Article not found | Playbook Mint",
     };
   }
 
   const published = article.publishedAt.toISOString();
 
   return {
-    title: `${article.title} | The Thrifty Pigeon`,
+    title: `${article.title} | Playbook Mint`,
     description: article.description,
     openGraph: {
       title: article.title,
@@ -69,7 +69,7 @@ export default async function ArticlePage({
         </Link>
         <header className="mt-6 space-y-6">
           <p className="text-sm font-semibold uppercase tracking-wide text-brand-600">
-            {article.tags.join(" · ") || "The Thrifty Pigeon"}
+            {article.tags.join(" · ") || "Playbook Mint"}
           </p>
           <h1 className="font-heading text-4xl font-semibold text-ink-900 sm:text-5xl">
             {article.title}

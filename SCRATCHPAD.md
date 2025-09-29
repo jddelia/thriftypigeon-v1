@@ -1,4 +1,4 @@
-# The Thrifty Pigeon Implementation Notes
+# Playbook Mint Implementation Notes
 
 ## TODO
 - [x] Review PRD requirements and define MVP scope for initial commit.

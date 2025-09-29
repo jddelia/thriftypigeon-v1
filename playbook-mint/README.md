@@ -1,6 +1,6 @@
-# The Thrifty Pigeon
+# Playbook Mint
 
-The Thrifty Pigeon is a content-first micro-playbook platform that turns organic traffic into $5–$9 impulse purchases. The app is built with the Next.js App Router, Tailwind CSS, and MDX-based content to mirror the funnel defined in the PRD.
+Playbook Mint is a content-first micro-playbook platform that turns organic traffic into $5–$9 impulse purchases. The app is built with the Next.js App Router, Tailwind CSS, and MDX-based content to mirror the funnel defined in the PRD.
 
 ## Project structure
 

@@ -1,7 +1,7 @@
 export const metadata = {
-  title: "Newsletter | The Thrifty Pigeon",
+  title: "Newsletter | Playbook Mint",
   description:
-    "Join The Thrifty Pigeon newsletter for field-tested tactics, best-performing articles, and subscriber-only playbook discounts.",
+    "Join the Playbook Mint newsletter for field-tested tactics, best-performing articles, and subscriber-only playbook discounts.",
 };
 
 export default function NewsletterPage() {
@@ -10,7 +10,7 @@ export default function NewsletterPage() {
       <p className="text-sm font-semibold uppercase tracking-wide text-brand-600">Newsletter</p>
       <h1 className="mt-4 font-heading text-4xl font-semibold text-ink-900">Weekly funnel breakdowns + bonus playbook drops</h1>
       <p className="mt-4 text-lg text-ink-700">
-        Subscribe to get deep dives on the content → CTA → checkout flow that powers The Thrifty Pigeon. Every issue includes a teardown, an optimization checklist, and early-bird pricing on new playbooks.
+        Subscribe to get deep dives on the content → CTA → checkout flow that powers Playbook Mint. Every issue includes a teardown, an optimization checklist, and early-bird pricing on new playbooks.
       </p>
       <div className="mt-10 rounded-3xl border border-brand-100 bg-brand-50/60 p-8 shadow-soft">
         <form className="flex flex-col gap-4 sm:flex-row">
