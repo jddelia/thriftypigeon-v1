@@ -7,16 +7,22 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 pb-20 pt-16 sm:px-6 lg:px-8">
       <p className="text-sm font-semibold uppercase tracking-wide text-brand-600">About</p>
-      <h1 className="mt-4 font-heading text-4xl font-semibold text-ink-900">Building a machine that turns helpful content into happy customers</h1>
+      <h1 className="mt-4 font-heading text-4xl font-semibold text-ink-900">Money advice that doesn't make you feel broke or stupid</h1>
       <div className="prose prose-lg mt-6 max-w-none text-ink-700">
         <p>
-          The Thrifty Pigeon exists for motivated searchers who want answers now. We publish free, SEO-driven guides that solve real problems and offer $5-$9 extended playbooks for readers ready to execute the full system.
+          Hi, I'm building The Thrifty Pigeon because I got tired of financial advice that either talked down to people or assumed they already had money to work with.
         </p>
         <p>
-          Our team has shipped dozens of digital products, run growth at fintech startups, and consulted on high-performing funnels. The result: a repeatable playbook for attracting intent-driven traffic and converting it into instant downloads.
+          Whether you're saving your first $100 or your first $10,000, you deserve guides that treat you like an intelligent person who just needs practical steps—not lectures about coffee shop visits.
         </p>
         <p>
-          We’re obsessed with clarity, speed, and compounding learnings. Expect frequent iteration, transparent metrics, and an inbox that always has room for customer feedback.
+          Every article on this site gives you everything you need to succeed. No paywalls, no "sign up to read the rest," no holding back the good stuff. The playbooks ($5-$9) are just convenience tools with spreadsheets and templates ready to use. Think of them as paying someone to do the setup work so you can skip straight to implementation.
+        </p>
+        <p>
+          I use these systems myself. When they work, I share them. When they don't, I don't. It's that simple.
+        </p>
+        <p>
+          Questions? Email me directly. I read and respond to everything.
         </p>
       </div>
     </div>

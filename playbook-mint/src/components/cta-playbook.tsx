@@ -31,7 +31,7 @@ export default function CTAPlaybook({ sku, className }: CTAPlaybookProps) {
       <div className="grid gap-8 p-8 md:grid-cols-[1.5fr_1fr] md:items-center">
         <div className="space-y-4">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-600">
-            Playbook Spotlight
+            Skip the Setup Work
           </p>
           <h3 className="font-heading text-3xl font-semibold text-ink-900">
             {playbook.title}
@@ -57,17 +57,17 @@ export default function CTAPlaybook({ sku, className }: CTAPlaybookProps) {
         </div>
         <div className="flex flex-col items-start gap-4 rounded-2xl bg-white p-6 shadow-soft">
           <div>
-            <p className="text-sm uppercase tracking-wide text-ink-500">Instant download</p>
+            <p className="text-sm uppercase tracking-wide text-ink-500">Ready-made toolkit</p>
             <p className="font-heading text-4xl font-semibold text-ink-900">{priceLabel}</p>
           </div>
           <Link
             href={playbook.checkoutUrl}
             className="inline-flex w-full items-center justify-center rounded-full bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-brand-700"
           >
-            Get instant access
+            Get the Tools
           </Link>
           <p className="text-xs text-ink-500">
-            Secure checkout via Lemon Squeezy. You’ll receive the download link and receipt instantly after purchase.
+            Instant download. 30-day money-back guarantee. All tools ready to use.
           </p>
         </div>
       </div>

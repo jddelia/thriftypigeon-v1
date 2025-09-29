@@ -15,39 +15,39 @@ export default async function HomePage() {
               The Thrifty Pigeon
             </span>
             <h1 className="font-heading text-4xl font-semibold tracking-tight text-ink-900 sm:text-5xl">
-              Free guides that unlock $5 playbooks your future self will thank you for.
+              Stop googling money advice that doesn't work for real people.
             </h1>
             <p className="max-w-xl text-lg text-ink-700">
-              Read the exact checklists, scripts, and automation workflows that help motivated people hit their next money milestone. Grab the extended playbook when you’re ready to implement.
+              Get step-by-step systems for saving money, building emergency funds, and earning extra income—written for people starting with any income level. Read the complete strategy free, then grab the ready-made spreadsheets and templates for $5-$9.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Link
-                href="/playbooks"
+                href="/articles"
                 className="inline-flex items-center rounded-full bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-brand-700"
               >
-                Browse micro playbooks
+                Start Building Wealth Today
               </Link>
               <Link
-                href="/articles"
+                href="/playbooks"
                 className="inline-flex items-center rounded-full border border-ink-200 px-6 py-3 text-base font-semibold text-ink-700 transition hover:border-brand-200 hover:text-brand-700"
               >
-                Explore all articles
+                Browse Ready-Made Tools
               </Link>
             </div>
             <p className="text-sm text-ink-500">
-              No spam. Just field-tested systems with templates, spreadsheets, and scripts.
+              <span className="font-semibold text-ink-700">No fluff. No fake promises.</span> Just systems that work for people with real budgets.
             </p>
           </div>
           <div className="rounded-3xl border border-brand-100 bg-white p-6 shadow-soft">
-            <h2 className="font-heading text-xl font-semibold text-ink-900">How the funnel works</h2>
+            <h2 className="font-heading text-xl font-semibold text-ink-900">Why this works better</h2>
             <ol className="mt-4 space-y-4 text-sm text-ink-700">
               <li className="flex gap-3">
                 <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-brand-100 font-semibold text-brand-700">
                   1
                 </span>
                 <div>
-                  <p className="font-semibold text-ink-800">Find the guide you need</p>
-                  <p>SEO-first articles show up exactly when someone is actively looking for solutions.</p>
+                  <p className="font-semibold text-ink-800">Complete strategies, not teases</p>
+                  <p>Every guide gives you the full system. No "sign up for the rest" or paywall cliffs.</p>
                 </div>
               </li>
               <li className="flex gap-3">
@@ -55,8 +55,8 @@ export default async function HomePage() {
                   2
                 </span>
                 <div>
-                  <p className="font-semibold text-ink-800">See the playbook CTA in context</p>
-                  <p>Inline call-to-actions showcase the extended playbook right after the highest-intent section.</p>
+                  <p className="font-semibold text-ink-800">Start with any income level</p>
+                  <p>Systems that work whether you're saving your first $100 or your first $10,000.</p>
                 </div>
               </li>
               <li className="flex gap-3">
@@ -64,8 +64,8 @@ export default async function HomePage() {
                   3
                 </span>
                 <div>
-                  <p className="font-semibold text-ink-800">Checkout in under 30 seconds</p>
-                  <p>Lemon Squeezy handles payments, fulfillment, and receipts. Buyers get instant download links.</p>
+                  <p className="font-semibold text-ink-800">Skip hours of setup work</p>
+                  <p>Ready-made spreadsheets, calculators, and templates for $5-$9. Less than a coffee.</p>
                 </div>
               </li>
             </ol>
