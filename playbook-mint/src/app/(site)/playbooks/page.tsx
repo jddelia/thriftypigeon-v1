@@ -4,7 +4,7 @@ import { listPlaybooks } from "@/data/playbooks";
 export const metadata = {
   title: "Playbooks | The Thrifty Pigeon",
   description:
-    "Instant-download playbooks designed to turn motivated readers into paying customers. Each comes with scripts, templates, and automation recipes.",
+    "Ready-made financial tools and templates for $5-$9. Skip hours of setup work with spreadsheets, calculators, and step-by-step guides you can use immediately.",
 };
 
 export default function PlaybooksPage() {
@@ -14,9 +14,9 @@ export default function PlaybooksPage() {
     <div className="mx-auto max-w-content px-4 pb-20 pt-16 sm:px-6 lg:px-8">
       <div className="max-w-3xl space-y-4">
         <p className="text-sm font-semibold uppercase tracking-wide text-brand-600">Playbooks</p>
-        <h1 className="font-heading text-4xl font-semibold text-ink-900">Micro products engineered for impulse buys</h1>
+        <h1 className="font-heading text-4xl font-semibold text-ink-900">Ready-made tools that save you hours of setup work</h1>
         <p className="text-lg text-ink-700">
-          Each playbook is a distilled, actionable blueprint you can execute in a weekend. Built for people who discover us via search and want the full system without the fluff.
+          Skip building spreadsheets from scratch. Get proven templates, calculators, and step-by-step guides you can download and use immediately. Each toolkit costs less than lunch.
         </p>
       </div>
       <div className="mt-12 grid gap-8">
@@ -40,7 +40,7 @@ export default function PlaybooksPage() {
             </div>
             <div className="flex w-full max-w-xs flex-col items-start gap-4 rounded-2xl bg-white p-6 shadow-soft">
               <div>
-                <p className="text-sm uppercase tracking-wide text-ink-500">Instant download</p>
+                <p className="text-sm uppercase tracking-wide text-ink-500">Ready to use</p>
                 <p className="font-heading text-4xl font-semibold text-ink-900">
                   {new Intl.NumberFormat("en-US", {
                     style: "currency",
@@ -53,7 +53,7 @@ export default function PlaybooksPage() {
                 href={playbook.checkoutUrl}
                 className="inline-flex w-full items-center justify-center rounded-full bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-brand-700"
               >
-                Get instant access
+                Get the Tools
               </Link>
             </div>
           </article>
