@@ -1,11 +1,11 @@
-# Product Requirements Document — **Playbook Mint** (MVP v2)
+# Product Requirements Document — **The Thrifty Pigeon** (MVP v2)
 ## Content-First Micro-Playbook Platform
 
 ---
 
 ## 0) One-liner
 
-**Playbook Mint** is a high-traffic content site where visitors read free how-to guides and listicles, then impulse-buy embedded $5-$9 "extended playbooks" (detailed PDF blueprints) for topics that resonate. Think: *"Great free article → I want the full system → $5 → instant download."*
+**The Thrifty Pigeon** is a high-traffic content site where visitors read free how-to guides and listicles, then impulse-buy embedded $5-$9 "extended playbooks" (detailed PDF blueprints) for topics that resonate. Think: *"Great free article → I want the full system → $5 → instant download."*
 
 ---
 
@@ -370,7 +370,7 @@ Questions? Just reply to this email.
 
 Best,
 [Your Name]
-Playbook Mint
+The Thrifty Pigeon
 
 P.S. Check out these related guides:
 → [Article 1]
@@ -379,7 +379,7 @@ P.S. Check out these related guides:
 
 **2. Welcome Email (Newsletter)**
 ```
-Subject: Welcome to Playbook Mint! Here's what you need 👋
+Subject: Welcome to The Thrifty Pigeon! Here's what you need 👋
 
 [Friendly intro]
 
@@ -554,7 +554,7 @@ We've also sent a download link to [email].
 
 ────────────────────
 
-Questions? Email support@playbookmint.com
+Questions? Email support@thethriftypigeon.com
 ```
 
 ---
@@ -1012,7 +1012,7 @@ Every article must pass this before publish:
 ### Admin & operations
 - [ ] Admin dashboard deployed (basic auth)
 - [ ] Refund process documented
-- [ ] Support email created (support@playbookmint.com)
+- [ ] Support email created (support@thethriftypigeon.com)
 - [ ] Backup process tested (database + R2)
 
 ---
