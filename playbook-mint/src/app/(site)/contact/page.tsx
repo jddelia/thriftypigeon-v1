@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Contact | Playbook Mint",
-  description: "Get in touch with the Playbook Mint team for partnerships, support, or press inquiries.",
+  title: "Contact | The Thrifty Pigeon",
+  description: "Get in touch with The Thrifty Pigeon team for partnerships, support, or press inquiries.",
 };
 
 export default function ContactPage() {
@@ -53,7 +53,7 @@ export default function ContactPage() {
             Send message
           </button>
         </form>
-        <p className="mt-4 text-xs text-ink-500">Prefer email? Reach us directly at hello@playbookmint.com.</p>
+        <p className="mt-4 text-xs text-ink-500">Prefer email? Reach us directly at hello@thethriftypigeon.com.</p>
       </div>
     </div>
   );

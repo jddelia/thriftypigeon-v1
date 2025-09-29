@@ -12,7 +12,7 @@ export default async function HomePage() {
         <div className="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-center">
           <div className="space-y-6">
             <span className="inline-flex items-center rounded-full border border-brand-100 bg-brand-50/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-600">
-              Playbook Mint
+              The Thrifty Pigeon
             </span>
             <h1 className="font-heading text-4xl font-semibold tracking-tight text-ink-900 sm:text-5xl">
               Free guides that unlock $5 playbooks your future self will thank you for.

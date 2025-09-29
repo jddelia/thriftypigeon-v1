@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "About | Playbook Mint",
-  description: "The story behind Playbook Mint and the micro-playbook model.",
+  title: "About | The Thrifty Pigeon",
+  description: "The story behind The Thrifty Pigeon and the micro-playbook model.",
 };
 
 export default function AboutPage() {
@@ -10,7 +10,7 @@ export default function AboutPage() {
       <h1 className="mt-4 font-heading text-4xl font-semibold text-ink-900">Building a machine that turns helpful content into happy customers</h1>
       <div className="prose prose-lg mt-6 max-w-none text-ink-700">
         <p>
-          Playbook Mint exists for motivated searchers who want answers now. We publish free, SEO-driven guides that solve real problems and offer $5-$9 extended playbooks for readers ready to execute the full system.
+          The Thrifty Pigeon exists for motivated searchers who want answers now. We publish free, SEO-driven guides that solve real problems and offer $5-$9 extended playbooks for readers ready to execute the full system.
         </p>
         <p>
           Our team has shipped dozens of digital products, run growth at fintech startups, and consulted on high-performing funnels. The result: a repeatable playbook for attracting intent-driven traffic and converting it into instant downloads.
