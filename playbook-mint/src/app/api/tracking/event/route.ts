@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { playbookService } from '@/lib/playbooks/playbook-service';
 import { z } from 'zod';
+import { rateLimit, RateLimits } from '@/lib/rate-limit';
 
 const trackEventSchema = z.object({
   playbookId: z.string(),
@@ -22,6 +23,12 @@ const trackEventSchema = z.object({
 
 // POST /api/tracking/event - Track user events (public endpoint)
 export async function POST(request: NextRequest) {
+  // Apply rate limiting: 100 requests per minute
+  const rateLimitResponse = await rateLimit(request, RateLimits.veryLenient);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
   try {
     const body = await request.json();
     const validatedData = trackEventSchema.parse(body);

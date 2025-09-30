@@ -1,11 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { playbookService } from '@/lib/playbooks/playbook-service';
+import { rateLimit, RateLimits } from '@/lib/rate-limit';
 
 // GET /api/playbooks/:slug - Get playbook by slug (public endpoint)
 export async function GET(
   request: NextRequest,
   { params }: { params: { slug: string } }
 ) {
+  // Apply rate limiting: 60 requests per minute
+  const rateLimitResponse = await rateLimit(request, RateLimits.lenient);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
   try {
     const playbook = await playbookService.getPlaybookBySlug(params.slug);
     

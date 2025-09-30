@@ -4,6 +4,7 @@ import React from 'react';
 import { render } from '@react-email/render';
 import { sendEmailSafely } from '@/lib/email/resend-client';
 import { WelcomeEmail } from '@/emails/templates/welcome';
+import { rateLimit, RateLimits } from '@/lib/rate-limit';
 
 // Email request validation schema
 const emailRequestSchema = z.object({
@@ -19,6 +20,12 @@ const welcomeEmailSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
+  // Apply rate limiting: 3 requests per hour
+  const rateLimitResponse = await rateLimit(request, RateLimits.veryStrict);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
   try {
     // Parse and validate the request body
     const body = await request.json();

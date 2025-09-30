@@ -1,12 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { playbookService } from '@/lib/playbooks/playbook-service';
 import { z } from 'zod';
+import { rateLimit, RateLimits } from '@/lib/rate-limit';
 
 // PUT /api/admin/playbooks/:id/platforms/:platform - Update platform integration
 export async function PUT(
   request: NextRequest,
   { params }: { params: { id: string; platform: string } }
 ) {
+  // Apply rate limiting: 100 requests per minute
+  const rateLimitResponse = await rateLimit(request, RateLimits.veryLenient);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
   try {
     const body = await request.json();
     

@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { playbookService } from '@/lib/playbooks/playbook-service';
+import { rateLimit, RateLimits } from '@/lib/rate-limit';
 
 // GET /api/admin/playbooks/search - Search playbooks
 export async function GET(request: NextRequest) {
+  // Apply rate limiting: 100 requests per minute
+  const rateLimitResponse = await rateLimit(request, RateLimits.veryLenient);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     

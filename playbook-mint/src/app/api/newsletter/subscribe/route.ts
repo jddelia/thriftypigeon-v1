@@ -4,6 +4,7 @@ import { db } from '@/db/client';
 import { newsletterSubscribers, signupSources } from '@/db/schema';
 import { eq, or } from 'drizzle-orm';
 import { sendWelcomeEmail } from '@/lib/email/email-service';
+import { rateLimit, RateLimits } from '@/lib/rate-limit';
 
 // Newsletter signup validation schema
 const newsletterSignupSchema = z.object({
@@ -23,6 +24,12 @@ const newsletterSignupSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
+  // Apply rate limiting: 5 requests per 15 minutes
+  const rateLimitResponse = await rateLimit(request, RateLimits.strict);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
   try {
     const body = await request.json();
     const validatedData = newsletterSignupSchema.parse(body);

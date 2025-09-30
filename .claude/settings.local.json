@@ -13,7 +13,12 @@
       "Bash(cp:*)",
       "Bash(mv:*)",
       "Bash(rmdir:*)",
-      "Bash(git diff:*)"
+      "Bash(git diff:*)",
+      "Bash(npx next:*)",
+      "Bash(npx tsc:*)",
+      "Bash(timeout 15 npm run dev)",
+      "Bash(for i in {1..7})",
+      "Bash(do echo \"Request $i:\" curl -s -X POST http://localhost:3001/api/newsletter/subscribe -H \"Content-Type: application/json\" -d '{\"\"\"\"email\"\"\"\":\"\"\"\"test'$i'@example.com\"\"\"\"}')"
     ],
     "deny": [],
     "ask": []

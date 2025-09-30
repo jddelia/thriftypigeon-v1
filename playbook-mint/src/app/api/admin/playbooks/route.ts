@@ -1,9 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { playbookService } from '@/lib/playbooks/playbook-service';
 import { z } from 'zod';
+import { rateLimit, RateLimits } from '@/lib/rate-limit';
 
 // GET /api/admin/playbooks - List all playbooks with filters
 export async function GET(request: NextRequest) {
+  // Apply rate limiting: 100 requests per minute
+  const rateLimitResponse = await rateLimit(request, RateLimits.veryLenient);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     
@@ -41,6 +48,12 @@ export async function GET(request: NextRequest) {
 
 // POST /api/admin/playbooks - Create new playbook
 export async function POST(request: NextRequest) {
+  // Apply rate limiting: 100 requests per minute
+  const rateLimitResponse = await rateLimit(request, RateLimits.veryLenient);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
   try {
     const body = await request.json();
     

@@ -1,12 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { playbookService } from '@/lib/playbooks/playbook-service';
 import { z } from 'zod';
+import { rateLimit, RateLimits } from '@/lib/rate-limit';
 
 // GET /api/admin/playbooks/:id - Get playbook details
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  // Apply rate limiting: 100 requests per minute
+  const rateLimitResponse = await rateLimit(request, RateLimits.veryLenient);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
   try {
     const playbook = await playbookService.getPlaybookById(params.id);
     
@@ -47,6 +54,12 @@ export async function PUT(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  // Apply rate limiting: 100 requests per minute
+  const rateLimitResponse = await rateLimit(request, RateLimits.veryLenient);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
   try {
     const body = await request.json();
     
@@ -101,6 +114,12 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  // Apply rate limiting: 100 requests per minute
+  const rateLimitResponse = await rateLimit(request, RateLimits.veryLenient);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
   try {
     await playbookService.deletePlaybook(params.id);
     
