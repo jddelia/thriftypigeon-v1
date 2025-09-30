@@ -12,7 +12,8 @@
       "Bash(node:*)",
       "Bash(cp:*)",
       "Bash(mv:*)",
-      "Bash(rmdir:*)"
+      "Bash(rmdir:*)",
+      "Bash(git diff:*)"
     ],
     "deny": [],
     "ask": []
