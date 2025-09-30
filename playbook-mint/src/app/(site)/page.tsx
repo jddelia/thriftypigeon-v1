@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArticleCard } from "@/components/article-card";
 import { listArticles } from "@/lib/articles";
 
@@ -7,13 +8,33 @@ export default async function HomePage() {
   const featured = articles.slice(0, 3);
 
   return (
-    <div className="bg-gradient-to-b from-brand-50/60 via-white to-white">
-      <section className="mx-auto max-w-content px-4 pb-16 pt-20 sm:px-6 lg:px-8">
+    <div className="bg-gradient-to-b from-brand-50/60 via-white to-white relative overflow-hidden">
+      {/* Background Logo */}
+      <div className="absolute top-16 right-4 opacity-5 pointer-events-none hidden lg:block">
+        <Image
+          src="/thrifty-logo-no-text.svg"
+          alt=""
+          width={300}
+          height={300}
+          className="w-80 h-80"
+        />
+      </div>
+      
+      <section className="mx-auto max-w-content px-4 pb-16 pt-20 sm:px-6 lg:px-8 relative">
         <div className="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-center">
           <div className="space-y-6">
-            <span className="inline-flex items-center rounded-full border border-brand-100 bg-brand-50/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-600">
-              The Thrifty Pigeon
-            </span>
+            <div className="flex items-center space-x-3">
+              <Image
+                src="/thrifty-logo-no-text.svg"
+                alt="The Thrifty Pigeon"
+                width={48}
+                height={48}
+                className="w-12 h-12"
+              />
+              <span className="inline-flex items-center rounded-full border border-brand-100 bg-brand-50/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-600">
+                The Thrifty Pigeon
+              </span>
+            </div>
             <h1 className="font-heading text-4xl font-semibold tracking-tight text-ink-900 sm:text-5xl">
               Stop googling money advice that doesn't work for real people.
             </h1>
@@ -38,8 +59,17 @@ export default async function HomePage() {
               <span className="font-semibold text-ink-700">No fluff. No fake promises.</span> Just systems that work for people with real budgets.
             </p>
           </div>
-          <div className="rounded-3xl border border-brand-100 bg-white p-6 shadow-soft">
-            <h2 className="font-heading text-xl font-semibold text-ink-900">Why this works better</h2>
+          <div className="rounded-3xl border border-brand-100 bg-white p-6 shadow-soft relative overflow-hidden">
+            <div className="absolute top-4 right-4 opacity-10">
+              <Image
+                src="/thrifty-logo-no-text.svg"
+                alt=""
+                width={60}
+                height={60}
+                className="w-15 h-15"
+              />
+            </div>
+            <h2 className="font-heading text-xl font-semibold text-ink-900 relative">Why this works better</h2>
             <ol className="mt-4 space-y-4 text-sm text-ink-700">
               <li className="flex gap-3">
                 <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-brand-100 font-semibold text-brand-700">

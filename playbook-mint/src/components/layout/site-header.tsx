@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const navigation = [
   { href: "/articles", label: "Articles" },
@@ -11,9 +12,13 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 w-full border-b border-ink-100/60 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-content items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 text-lg font-semibold text-ink-900">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-600 text-sm font-bold uppercase text-white shadow-sm">
-            TP
-          </span>
+          <Image
+            src="/thrifty-logo-no-text.svg"
+            alt="The Thrifty Pigeon logo"
+            width={32}
+            height={32}
+            className="h-8 w-8"
+          />
           <span className="font-heading text-lg">The Thrifty Pigeon</span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium text-ink-600 sm:flex">

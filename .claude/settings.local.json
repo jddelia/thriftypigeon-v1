@@ -9,7 +9,10 @@
       "Bash(npm run dev:*)",
       "Bash(curl:*)",
       "Bash(npm run:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(rmdir:*)"
     ],
     "deny": [],
     "ask": []
