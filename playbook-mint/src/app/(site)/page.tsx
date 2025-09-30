@@ -8,97 +8,90 @@ export default async function HomePage() {
   const featured = articles.slice(0, 3);
 
   return (
-    <div className="bg-gradient-to-b from-brand-50/60 via-white to-white relative overflow-hidden">
-      {/* Background Logo */}
-      <div className="absolute top-16 right-4 opacity-5 pointer-events-none hidden lg:block">
-        <Image
-          src="/thrifty-logo-no-text.svg"
-          alt=""
-          width={300}
-          height={300}
-          className="w-80 h-80"
-        />
-      </div>
-      
-      <section className="mx-auto max-w-content px-4 pb-16 pt-20 sm:px-6 lg:px-8 relative">
-        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-center">
-          <div className="space-y-6">
-            <div className="flex items-center space-x-3">
-              <Image
-                src="/thrifty-logo-no-text.svg"
-                alt="The Thrifty Pigeon"
-                width={48}
-                height={48}
-                className="w-12 h-12"
-              />
-              <span className="inline-flex items-center rounded-full border border-brand-100 bg-brand-50/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-600">
-                The Thrifty Pigeon
-              </span>
-            </div>
-            <h1 className="font-heading text-4xl font-semibold tracking-tight text-ink-900 sm:text-5xl">
-              Stop googling money advice that doesn't work for real people.
-            </h1>
-            <p className="max-w-xl text-lg text-ink-700">
-              Get step-by-step systems for saving money, building emergency funds, and earning extra income—written for people starting with any income level. Read the complete strategy free, then grab the ready-made spreadsheets and templates for $5-$9.
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href="/articles"
-                className="inline-flex items-center rounded-full bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-brand-700"
-              >
-                Start Building Wealth Today
-              </Link>
-              <Link
-                href="/playbooks"
-                className="inline-flex items-center rounded-full border border-ink-200 px-6 py-3 text-base font-semibold text-ink-700 transition hover:border-brand-200 hover:text-brand-700"
-              >
-                Browse Ready-Made Tools
-              </Link>
-            </div>
-            <p className="text-sm text-ink-500">
-              <span className="font-semibold text-ink-700">No fluff. No fake promises.</span> Just systems that work for people with real budgets.
-            </p>
+    <div className="bg-gradient-to-b from-brand-50/60 via-white to-white">
+      <section className="mx-auto max-w-content px-4 pb-16 pt-20 sm:px-6 lg:px-8">
+        <div className="grid gap-12 md:grid-cols-[1fr_1.1fr] md:items-center">
+          {/* Logo Section - Left */}
+          <div className="flex justify-center md:justify-start order-2 md:order-1">
+            <Image
+              src="/thrifty-logo-text.svg"
+              alt="The Thrifty Pigeon"
+              width={400}
+              height={300}
+              className="w-full max-w-sm md:max-w-md lg:max-w-md opacity-95"
+              priority
+            />
           </div>
-          <div className="rounded-3xl border border-brand-100 bg-white p-6 shadow-soft relative overflow-hidden">
-            <div className="absolute top-4 right-4 opacity-10">
-              <Image
-                src="/thrifty-logo-no-text.svg"
-                alt=""
-                width={60}
-                height={60}
-                className="w-15 h-15"
-              />
+
+          {/* Content Section - Right */}
+          <div className="space-y-8 order-1 md:order-2">
+            {/* Header Section */}
+            <div className="space-y-4">
+              <span className="inline-flex items-center rounded-full border border-brand-100 bg-brand-50/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-600">
+                Financial Freedom Made Simple
+              </span>
+              <h1 className="font-heading text-4xl font-bold tracking-tight text-ink-900 sm:text-5xl lg:text-6xl leading-tight">
+                Money making tips that
+                <span className="text-brand-600"> actually work</span>
+              </h1>
             </div>
-            <h2 className="font-heading text-xl font-semibold text-ink-900 relative">Why this works better</h2>
-            <ol className="mt-4 space-y-4 text-sm text-ink-700">
-              <li className="flex gap-3">
-                <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-brand-100 font-semibold text-brand-700">
-                  1
-                </span>
-                <div>
-                  <p className="font-semibold text-ink-800">Complete strategies, not teases</p>
-                  <p>Every guide gives you the full system. No "sign up for the rest" or paywall cliffs.</p>
+
+            {/* Visual Divider */}
+            <div className="flex items-center space-x-4">
+              <div className="h-px bg-gradient-to-r from-brand-200 to-transparent flex-grow"></div>
+              <div className="w-2 h-2 bg-brand-400 rounded-full"></div>
+              <div className="h-px bg-gradient-to-l from-brand-200 to-transparent flex-grow"></div>
+            </div>
+
+            {/* Value Proposition */}
+            <div className="space-y-4">
+              <p className="text-xl text-ink-700 font-medium">
+                Step-by-step systems for any income level
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-ink-600">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span>Free complete guides</span>
                 </div>
-              </li>
-              <li className="flex gap-3">
-                <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-brand-100 font-semibold text-brand-700">
-                  2
-                </span>
-                <div>
-                  <p className="font-semibold text-ink-800">Start with any income level</p>
-                  <p>Systems that work whether you're saving your first $100 or your first $10,000.</p>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>$5-$9 ready-made tools</span>
                 </div>
-              </li>
-              <li className="flex gap-3">
-                <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-brand-100 font-semibold text-brand-700">
-                  3
-                </span>
-                <div>
-                  <p className="font-semibold text-ink-800">Skip hours of setup work</p>
-                  <p>Ready-made spreadsheets, calculators, and templates for $5-$9. Less than a coffee.</p>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                  <span>Real budgets only</span>
                 </div>
-              </li>
-            </ol>
+              </div>
+            </div>
+
+            {/* Call to Action */}
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  href="/articles"
+                  className="inline-flex items-center rounded-full bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-brand-700 hover:shadow-md transform hover:-translate-y-0.5"
+                >
+                  Start Building Wealth Today
+                </Link>
+                <Link
+                  href="/playbooks"
+                  className="inline-flex items-center rounded-full border border-ink-200 px-6 py-3 text-base font-semibold text-ink-700 transition hover:border-brand-200 hover:text-brand-700 hover:shadow-sm"
+                >
+                  Browse Ready-Made Tools
+                </Link>
+              </div>
+
+              {/* Trust Signal */}
+              <div className="flex items-center space-x-2 text-sm text-ink-500">
+                <div className="flex space-x-1">
+                  <div className="w-1 h-1 bg-brand-400 rounded-full"></div>
+                  <div className="w-1 h-1 bg-brand-400 rounded-full"></div>
+                  <div className="w-1 h-1 bg-brand-400 rounded-full"></div>
+                </div>
+                <span className="font-semibold text-ink-700">No fluff. No fake promises.</span>
+                <span>Just systems that work.</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
