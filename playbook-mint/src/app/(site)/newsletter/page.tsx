@@ -1,3 +1,5 @@
+import { NewsletterSignupForm } from '@/components/newsletter-signup-form';
+
 export const metadata = {
   title: "Newsletter | The Thrifty Pigeon",
   description:
@@ -12,28 +14,40 @@ export default function NewsletterPage() {
       <p className="mt-4 text-lg text-ink-700">
         Get my latest guides delivered first, practical tips you can use this week, and subscriber-only discounts on spreadsheets and templates. Plus, I share the money systems that are working best for me personally.
       </p>
-      <div className="mt-10 rounded-3xl border border-brand-100 bg-brand-50/60 p-8 shadow-soft">
-        <form className="flex flex-col gap-4 sm:flex-row">
-          <label htmlFor="email" className="sr-only">
-            Email address
-          </label>
-          <input
-            id="email"
-            type="email"
-            placeholder="you@example.com"
-            required
-            className="flex-1 rounded-full border border-brand-100 bg-white px-4 py-3 text-base text-ink-900 shadow-sm focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-200"
-          />
-          <button
-            type="submit"
-            className="inline-flex items-center justify-center rounded-full bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-brand-700"
-          >
-            Subscribe
-          </button>
-        </form>
-        <p className="mt-4 text-xs text-ink-500">
-          One email per week, no spam. Unsubscribe anytime with one click.
-        </p>
+      
+      <div className="mt-10">
+        <NewsletterSignupForm />
+      </div>
+
+      {/* Additional value props */}
+      <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        <div className="rounded-2xl border border-ink-100 bg-white p-6">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100">
+              <svg className="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="font-semibold text-ink-900">Weekly Money Tips</h3>
+              <p className="text-sm text-ink-600">Practical systems you can use this week</p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="rounded-2xl border border-ink-100 bg-white p-6">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100">
+              <svg className="h-5 w-5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="font-semibold text-ink-900">Early Access</h3>
+              <p className="text-sm text-ink-600">Get new guides before anyone else</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
