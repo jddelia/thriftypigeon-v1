@@ -1,93 +1,111 @@
-import fs from "node:fs/promises";
-import path from "node:path";
-import { cache, type ReactNode } from "react";
-import { compileMDX } from "next-mdx-remote/rsc";
-import matter from "gray-matter";
+import { cache } from "react";
 import readingTime from "reading-time";
 import { z } from "zod";
-import { mdxComponents } from "@/components/mdx/components";
-import remarkGfm from "remark-gfm";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import type { PortableTextBlock } from "@portabletext/types";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { readClient } from "@/lib/sanity/client";
+import { ARTICLE_LIST_QUERY, ARTICLE_QUERY, ARTICLE_SLUGS_QUERY } from "@/lib/sanity/queries";
 
-const articlesDirectory = path.join(process.cwd(), "content", "articles");
+const sanityImageSchema: z.ZodType<SanityImageSource | null> = z
+  .unknown()
+  .nullable()
+  .transform((value) => (value ? (value as SanityImageSource) : null));
 
-const articleFrontmatterSchema = z.object({
+const portableTextBlockSchema: z.ZodType<PortableTextBlock> = z
+  .object({
+    _key: z.string(),
+    _type: z.string(),
+  })
+  .passthrough();
+
+const baseArticleSchema = z.object({
   title: z.string(),
-  description: z.string(),
-  slug: z.string().optional(),
-  publishedAt: z.coerce.date(),
-  updatedAt: z.coerce.date().optional(),
+  description: z.string().default(""),
+  slug: z.string(),
+  publishedAt: z.string(),
+  updatedAt: z.string().nullish(),
   tags: z.array(z.string()).default([]),
-  heroImage: z.string().optional(),
-  heroImageAlt: z.string().optional(),
-  playbookSku: z.string().optional(),
+  heroImage: sanityImageSchema.nullish(),
+  heroImageAlt: z.string().nullish(),
+  playbookSku: z.string().nullish(),
+  bodyText: z.string().default(""),
 });
 
-export type ArticleFrontmatter = z.infer<typeof articleFrontmatterSchema> & {
+type ArticleRecord = z.infer<typeof baseArticleSchema>;
+
+const articleDetailSchema = baseArticleSchema.extend({
+  body: z.array(portableTextBlockSchema).default([]),
+});
+
+export interface ArticleFrontmatter {
+  title: string;
+  description: string;
   slug: string;
+  publishedAt: Date;
+  updatedAt?: Date;
+  tags: string[];
+  heroImage: SanityImageSource | null;
+  heroImageAlt?: string | null;
+  playbookSku?: string;
   readingMinutes: number;
-};
+}
 
 export interface ArticleDetail extends ArticleFrontmatter {
-  content: ReactNode;
+  body: PortableTextBlock[];
 }
 
-async function loadArticleFile(slug: string) {
-  const filePath = path.join(articlesDirectory, `${slug}.mdx`);
-  const file = await fs.readFile(filePath, "utf8");
-  return file;
-}
+function mapArticle(record: ArticleRecord): ArticleFrontmatter {
+  const publishedAt = new Date(record.publishedAt);
+  const updatedAt = record.updatedAt ? new Date(record.updatedAt) : undefined;
+  const readingStats = readingTime(record.bodyText || "");
+  const readingMinutes = Math.max(1, Math.round(readingStats.minutes));
 
-async function parseArticle(slug: string) {
-  const raw = await loadArticleFile(slug);
-  const { content, data } = matter(raw);
-  const stats = readingTime(content);
-  const parsed = articleFrontmatterSchema.parse({ ...data, slug: data.slug ?? slug });
-  const { content: mdxContent } = await compileMDX({
-    source: content,
-    components: mdxComponents,
-    options: {
-      parseFrontmatter: false,
-      mdxOptions: {
-        remarkPlugins: [remarkGfm],
-        rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
-      },
-    },
-  });
+  const heroImageAlt =
+    record.heroImageAlt ??
+    (record.heroImage && typeof (record.heroImage as { alt?: unknown }).alt === "string"
+      ? ((record.heroImage as { alt?: string }).alt ?? null)
+      : null);
 
   return {
-    frontmatter: {
-      ...parsed,
-      slug: parsed.slug ?? slug,
-      readingMinutes: Math.max(1, Math.round(stats.minutes)),
-    },
-    content: mdxContent,
-  } as const;
+    title: record.title,
+    description: record.description,
+    slug: record.slug,
+    publishedAt,
+    updatedAt,
+    tags: record.tags ?? [],
+    heroImage: record.heroImage ?? null,
+    heroImageAlt,
+    playbookSku: record.playbookSku ?? undefined,
+    readingMinutes,
+  } satisfies ArticleFrontmatter;
 }
 
 export const getArticleBySlug = cache(async (slug: string): Promise<ArticleDetail> => {
-  const article = await parseArticle(slug);
+  const result = await readClient.fetch(ARTICLE_QUERY, { slug });
+  const parsed = articleDetailSchema.parse(result);
+  const frontmatter = mapArticle(parsed);
+
   return {
-    ...article.frontmatter,
-    content: article.content,
+    ...frontmatter,
+    body: parsed.body,
   } satisfies ArticleDetail;
 });
 
-export const getArticleFrontmatter = cache(async (slug: string) => {
-  const article = await parseArticle(slug);
-  return article.frontmatter;
+export const getArticleFrontmatter = cache(async (slug: string): Promise<ArticleFrontmatter> => {
+  const result = await readClient.fetch(ARTICLE_QUERY, { slug });
+  const parsed = articleDetailSchema.parse(result);
+  return mapArticle(parsed);
 });
 
-async function getArticleSlugs() {
-  const entries = await fs.readdir(articlesDirectory, { withFileTypes: true });
-  return entries.filter((entry) => entry.isFile() && entry.name.endsWith(".mdx")).map((entry) => entry.name.replace(/\.mdx$/, ""));
-}
-
 export const listArticles = cache(async (): Promise<ArticleFrontmatter[]> => {
-  const slugs = await getArticleSlugs();
-  const articles = await Promise.all(slugs.map(async (slug) => getArticleFrontmatter(slug)));
+  const result = await readClient.fetch(ARTICLE_LIST_QUERY);
+  const parsed = z.array(baseArticleSchema).parse(result ?? []);
+  const articles = parsed.map(mapArticle);
   return articles.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
 });
 
-export const listArticleSlugs = cache(async () => getArticleSlugs());
+export const listArticleSlugs = cache(async (): Promise<string[]> => {
+  const result = await readClient.fetch(ARTICLE_SLUGS_QUERY);
+  const parsed = z.array(z.string()).parse(result ?? []);
+  return parsed;
+});
