@@ -1,4 +1,4 @@
-import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import readingTime from "reading-time";
 import { z } from "zod";
 import type { PortableTextBlock } from "@portabletext/types";
@@ -80,7 +80,7 @@ function mapArticle(record: ArticleRecord): ArticleFrontmatter {
   } satisfies ArticleFrontmatter;
 }
 
-export const getArticleBySlug = cache(async (slug: string): Promise<ArticleDetail> => {
+const fetchArticleDetail = async (slug: string): Promise<ArticleDetail> => {
   const result = await readClient.fetch(ARTICLE_QUERY, { slug });
   const parsed = articleDetailSchema.parse(result);
   const frontmatter = mapArticle(parsed);
@@ -89,23 +89,55 @@ export const getArticleBySlug = cache(async (slug: string): Promise<ArticleDetai
     ...frontmatter,
     body: parsed.body,
   } satisfies ArticleDetail;
-});
+};
 
-export const getArticleFrontmatter = cache(async (slug: string): Promise<ArticleFrontmatter> => {
-  const result = await readClient.fetch(ARTICLE_QUERY, { slug });
-  const parsed = articleDetailSchema.parse(result);
-  return mapArticle(parsed);
-});
-
-export const listArticles = cache(async (): Promise<ArticleFrontmatter[]> => {
+const fetchArticleList = async (): Promise<ArticleFrontmatter[]> => {
   const result = await readClient.fetch(ARTICLE_LIST_QUERY);
   const parsed = z.array(baseArticleSchema).parse(result ?? []);
   const articles = parsed.map(mapArticle);
   return articles.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
-});
+};
 
-export const listArticleSlugs = cache(async (): Promise<string[]> => {
+const fetchArticleSlugs = async (): Promise<string[]> => {
   const result = await readClient.fetch(ARTICLE_SLUGS_QUERY);
   const parsed = z.array(z.string()).parse(result ?? []);
   return parsed;
+};
+
+export const getArticleBySlug = unstable_cache(fetchArticleDetail, [
+  "articles",
+  "detail",
+], {
+  tags: ["article-detail"],
+});
+
+export async function getArticleFrontmatter(slug: string): Promise<ArticleFrontmatter> {
+  const article = await getArticleBySlug(slug);
+
+  return {
+    title: article.title,
+    description: article.description,
+    slug: article.slug,
+    publishedAt: article.publishedAt,
+    updatedAt: article.updatedAt,
+    tags: article.tags,
+    heroImage: article.heroImage,
+    heroImageAlt: article.heroImageAlt ?? null,
+    playbookSku: article.playbookSku,
+    readingMinutes: article.readingMinutes,
+  } satisfies ArticleFrontmatter;
+}
+
+export const listArticles = unstable_cache(fetchArticleList, [
+  "articles",
+  "list",
+], {
+  tags: ["article-list"],
+});
+
+export const listArticleSlugs = unstable_cache(fetchArticleSlugs, [
+  "articles",
+  "slugs",
+], {
+  tags: ["article-slugs"],
 });

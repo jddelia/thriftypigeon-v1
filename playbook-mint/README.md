@@ -66,7 +66,21 @@ SANITY_PROJECT_ID=your-project-id
 SANITY_DATASET=production
 SANITY_API_VERSION=2025-01-01
 SANITY_READ_TOKEN= # optional, only needed for preview/draft mode
+SANITY_REVALIDATE_SECRET= # required for ISR webhook verification
+SANITY_STUDIO_URL= # optional, used for Portable Text stega URLs
+NEXT_PUBLIC_SANITY_STUDIO_URL= # optional, expose Studio URL to the browser when needed
 ```
+
+### Automatic cache revalidation
+
+Configure a Sanity webhook to automatically refresh the article listing and detail pages whenever content changes:
+
+1. In the Sanity project settings, create a webhook pointing to your deployment's `/api/revalidate` endpoint (e.g. `https://thriftypigeon.com/api/revalidate`).
+2. Choose the **Article** dataset filter (or `*[_type == "article"]` GROQ filter) and enable draft events if you want draft previews to purge caches.
+3. Set the **HTTP method** to `POST`, set the **secret** to the same value as `SANITY_REVALIDATE_SECRET`, and enable the signature header.
+4. Deploy the updated environment variable alongside your Next.js app.
+
+On each publish, update, or delete event the webhook will invalidate the relevant cache tags and revalidate the affected article routes so readers always see the latest content.
 
 ## Next steps
 
