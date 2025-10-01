@@ -143,7 +143,7 @@ src/
 
 Your `.env` file now includes:
 ```env
-RESEND_API_KEY=re_WdFnupy4_13xSARS6HsJiNPDxiv3f1aZx
+RESEND_API_KEY=re_WdFnupy4234sdfe543
 FROM_EMAIL=hello@thethriftypigeon.com
 FROM_NAME=The Thrifty Pigeon
 SUPPORT_EMAIL=hello@thethriftypigeon.com
@@ -188,7 +188,7 @@ async function handleNewsletterSignup(email: string, name?: string) {
     email,
     firstName: name || email.split('@')[0]
   });
-  
+
   return result.success;
 }
 ```
@@ -204,7 +204,7 @@ async function handleNewsletterSignup(email: string, name?: string) {
 ```typescript
 // The welcome email already includes your top articles:
 // - Emergency Fund Complete Guide
-// - Budgeting for Beginners  
+// - Budgeting for Beginners
 // - Save $200+ on Monthly Bills
 ```
 
