@@ -26,7 +26,7 @@ export default async function ArticlesIndexPage() {
         ))}
         {articles.length === 0 && (
           <p className="col-span-full rounded-3xl border border-dashed border-ink-200 bg-white/60 p-8 text-center text-sm text-ink-500">
-            No articles published yet. Add MDX files to <code className="font-mono text-xs">/content/articles</code>.
+            No articles published yet. Publish your first story from Sanity Studio to populate this page.
           </p>
         )}
       </div>

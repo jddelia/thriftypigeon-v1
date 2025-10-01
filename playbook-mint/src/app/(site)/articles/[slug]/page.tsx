@@ -7,6 +7,7 @@ import {
   getArticleFrontmatter,
   listArticleSlugs,
 } from "@/lib/articles";
+import { SanityPortableText } from "@/components/sanity/portable-text";
 
 export async function generateStaticParams() {
   const slugs = await listArticleSlugs();
@@ -81,8 +82,8 @@ export default async function ArticlePage({
             <span>{article.readingMinutes} min read</span>
           </div>
         </header>
-        <div className="prose prose-lg mt-12 max-w-none text-ink-700">
-          {article.content}
+        <div className="mt-12 space-y-6 text-ink-700">
+          <SanityPortableText value={article.body} />
         </div>
       </div>
     </article>
